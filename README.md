@@ -801,7 +801,9 @@ Cloudflare D1 免费版提供 5GB 存储和 5M 读取行/日、100K 写入行/�
 <details>
 <summary>界面预览</summary>
 
-![image](https://github.com/user-attachments/assets/0527f847-4631-47ad-8315-3f80ebba42d2)
+### 深色风格
+![image](https://github.com/user-attachments/assets/4e6a5db4-65d3-4d40-91b9-9e46ee140d0d)
+![image](https://github.com/user-attachments/assets/c10a1376-3d4c-4a58-8d3b-dc904b30f174)
 ![image](https://github.com/user-attachments/assets/a9c1aefd-42f7-4805-aa42-bbe9e58aed59)
 ![image](https://github.com/user-attachments/assets/527bcf04-3124-4f1c-b052-451bccae961d)
 ![image](https://github.com/user-attachments/assets/ac6f6fbb-b9fb-45cd-93e5-ca08bbad9ecb)
@@ -809,8 +811,9 @@ Cloudflare D1 免费版提供 5GB 存储和 5M 读取行/日、100K 写入行/�
 ![image](https://github.com/user-attachments/assets/ba0d3605-ef64-4be1-884b-9506f20277a8)
 ![image](https://github.com/user-attachments/assets/197767cc-028b-4ec1-b41f-5cadc2b25629)
 
-浅色风格
-![image](https://github.com/user-attachments/assets/3a7f3204-0a68-4f59-9822-f7f1b5479822)
+### 浅色风格
+![image](https://github.com/user-attachments/assets/8d310095-2b93-40f3-b762-323fbe6595f6)
+![image](https://github.com/user-attachments/assets/bfa48a70-5379-495f-8599-fc9bf49c4801)
 ![image](https://github.com/user-attachments/assets/e100d984-3165-4f38-948a-625249b4600a)
 ![image](https://github.com/user-attachments/assets/7d266ff3-0db7-477b-8029-c76e42298002)
 
