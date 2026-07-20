@@ -29,12 +29,7 @@ if (fs.existsSync(envPath)) {
   }
 }
 
-// 读取环境变量
-const splitEnvList = (value) => value
-  ? value.split(',').map(s => s.trim()).filter(Boolean)
-  : [];
-
-const apiBase = splitEnvList(process.env.API_BASE);
+const apiBase = parseCspOrigins(process.env.API_BASE || '');
 const title = process.env.TITLE || '';
 const backgroundImage = process.env.BACKGROUND_IMAGE || '';
 

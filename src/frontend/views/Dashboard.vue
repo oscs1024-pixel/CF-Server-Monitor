@@ -174,9 +174,9 @@
               <td v-if="sysConfig.show_tf && server.traffic_limit">
                 <div class="table-stat">
                   <div class="stat-bar-container stat-bar-small">
-                    <div class="stat-bar-fill" :style="{ width: Math.min(100, parseFloat(getTrafficUsagePercent(server))) + '%', background: 'var(--accent-blue)' }"></div>
+                    <div class="stat-bar-fill" :style="{ width: Math.min(100, calcTrafficUsagePercent(server)) + '%', background: 'var(--accent-blue)' }"></div>
                   </div>
-                  <span>{{ getTrafficUsagePercent(server) }}%</span>
+                  <span>{{ calcTrafficUsagePercent(server).toFixed(1) }}%</span>
                 </div>
               </td>
               <td v-else>-</td>
@@ -230,7 +230,8 @@ import ServerBarCard from '../components/ServerBarCard.vue'
 import ServerRingCard from '../components/ServerRingCard.vue'
 import Footer from '../components/Footer.vue'
 import OsIcon from '../components/OsIcon.vue'
-import { fetchConfig, fetchServersAll, fetchServersAllWithProgress, formatBytes, createLiveSocket, getFlagRegionCode, getApiBases, getTrafficUsagePercent, isServerOnline } from '../utils/api.js'
+import { fetchConfig, fetchServersAll, fetchServersAllWithProgress, formatBytes, createLiveSocket, getFlagRegionCode, getApiBases, isServerOnline } from '../utils/api.js'
+import { calcTrafficUsagePercent } from '../composables/useServerCardData'
 import { getTitle, hasMultipleApiBases, getPublicAssetUrl } from '../utils/config'
 import { currentLang, useTranslation } from '../utils/i18n.js'
 import { TIME, DEFAULT_SITE_TITLE, STORAGE } from '../utils/constants'

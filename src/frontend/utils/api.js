@@ -218,25 +218,6 @@ export const formatBytes = (bytes) => {
   return parseFloat((bytes / Math.pow(k, safeIndex)).toFixed(0)) + ' ' + sizes[safeIndex]
 }
 
-export const getTrafficUsagePercent = (server) => {
-  const limit = parseFloat(server.traffic_limit) || 0
-  if (limit <= 0) return '0'
-
-  const limitBytes = limit * 1024 * 1024 * 1024
-  let usedBytes = 0
-
-  const calcType = server.traffic_calc_type || 'total'
-  if (calcType === 'dl') {
-    usedBytes = parseFloat(server.net_rx_monthly) || 0
-  } else if (calcType === 'ul') {
-    usedBytes = parseFloat(server.net_tx_monthly) || 0
-  } else {
-    usedBytes = (parseFloat(server.net_rx_monthly) || 0) + (parseFloat(server.net_tx_monthly) || 0)
-  }
-
-  return ((usedBytes / limitBytes) * 100).toFixed(1)
-}
-
 export const isServerOnline = (server, now = Date.now()) => {
   const lastUpdated = normalizeTimestamp(server?.report_timestamp ?? server?.last_updated)
   return lastUpdated && (now - lastUpdated) < TIME.ONLINE_THRESHOLD_MS

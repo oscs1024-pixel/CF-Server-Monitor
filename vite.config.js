@@ -3,7 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import mkcert from 'vite-plugin-mkcert'
 import fs from 'fs'
 import path from 'path'
-import { resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { parseCspOrigins, buildApiDomainsWithWs, rebuildCsp, buildBackgroundStyle, injectTitle, injectApiBase } from './src/utils/csp.js'
 
@@ -67,7 +66,7 @@ export default defineConfig({
   base: process.env.VITE_BASE || '/',
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src/frontend')
+      '@': path.resolve(__dirname, 'src/frontend')
     }
   },
   build: {

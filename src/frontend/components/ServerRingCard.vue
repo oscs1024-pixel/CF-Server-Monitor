@@ -5,9 +5,11 @@
         <div class="server-identity">
           <span v-if="regionCode && regionCode !== 'xx'" class="country-os-icons">
             <img class="flag-img" :src="getPublicAssetUrl('flags/' + regionCode + '.svg')" :alt="regionCode">
+            <OsIcon :os="server.os" />
           </span>
           <span v-else class="country-os-icons">
             <span class="flag-fallback">🏳️</span>
+            <OsIcon :os="server.os" />
           </span>
           <span class="server-name">{{ server.name }}</span>
         </div>
@@ -20,7 +22,7 @@
         </div>
         <div class="card-badges">
           <span v-for="(tag, index) in tagList" :key="tag" :class="['badge', 'badge-tag', tagColorClass(index)]">{{ tag }}</span>
-          <span v-if="server.ip_v4 === '1' && server.ip_v6 === '1'" class="badge badge badge-v4-v6">IPv4/6</span>
+          <span v-if="server.ip_v4 === '1' && server.ip_v6 === '1'" class="badge badge-v4-v6">IPv4/6</span>
           <template v-else>
             <span v-if="server.ip_v4 === '1'" class="badge badge-v4">IPv4</span>
             <span v-if="server.ip_v6 === '1'" class="badge badge-v6">IPv6</span>
@@ -106,6 +108,7 @@
 </template>
 
 <script setup>
+import OsIcon from './OsIcon.vue'
 import { DEFAULT_SERVER_CARD_CONFIG, useServerCardData } from '../composables/useServerCardData'
 
 const props = defineProps({

@@ -9,7 +9,25 @@ export const DEFAULT_SERVER_CARD_CONFIG = {
   show_price: true,
   show_expire: true,
   show_tf: true,
-  show_time: true
+  show_time: true,
+  display_mode: 'bar'
+}
+
+export const getTrafficUsageBytes = (server) => {
+  const rx = parseFloat(server.net_rx_monthly) || 0
+  const tx = parseFloat(server.net_tx_monthly) || 0
+  const calcType = server.traffic_calc_type || 'total'
+  if (calcType === 'dl') return rx
+  if (calcType === 'ul') return tx
+  return rx + tx
+}
+
+export const calcTrafficUsagePercent = (server) => {
+  const limit = parseFloat(server.traffic_limit) || 0
+  if (limit <= 0) return 0
+  const limitBytes = limit * 1024 * 1024 * 1024
+  const usedBytes = getTrafficUsageBytes(server)
+  return (usedBytes / limitBytes) * 100
 }
 
 export function useServerCardData(props) {
@@ -50,20 +68,11 @@ export function useServerCardData(props) {
     return 0
   })
 
-  const getTrafficUsageBytes = () => {
-    const rx = Number.parseFloat(props.server.net_rx_monthly) || 0
-    const tx = Number.parseFloat(props.server.net_tx_monthly) || 0
-    const calcType = props.server.traffic_calc_type || 'total'
-    if (calcType === 'dl') return rx
-    if (calcType === 'ul') return tx
-    return rx + tx
-  }
-
   const trafficLimitSummary = computed(() => {
     const limitGb = Number.parseFloat(props.server.traffic_limit) || 0
     if (limitGb <= 0) return null
     const limitBytes = limitGb * 1024 * 1024 * 1024
-    const usedBytes = getTrafficUsageBytes()
+    const usedBytes = getTrafficUsageBytes(props.server)
     return {
       usedBytes,
       limitBytes,
